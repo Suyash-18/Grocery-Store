@@ -19,8 +19,25 @@ const connection = mysql.createConnection({
     password: '@Suyash1234'
 });
 
+//Home Route
 app.get("/" , (req, res) => {
     res.render("home");
+});
+//Contact Route
+app.get("/contact" , (req, res) => {
+    res.render("contact-us");
+});
+//About Route
+app.get("/about" , (req, res) => {
+    res.render("about");
+});
+//Cart Route
+app.get("/cart" , (req, res) => {
+    res.render("cart");
+});
+//Signin Route
+app.get("/signin" , (req, res) => {
+    res.render("signin");
 });
 
 app.listen(port, () =>{

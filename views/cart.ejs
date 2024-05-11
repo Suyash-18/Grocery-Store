@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | Grocery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+     <!-- <navbar> -->
+      <%- include("include/nav.ejs") %>
+    <div class="personal-hero-section" style="background-image: url('/cart-hero.jpg');">
+        <div class="personal-msg hero-msg">
+            <p>Cart <i class="fa-solid fa-cart-shopping"></i></p>
+      </div>
+    </div>
+    <div class="cart-section">
+        <div class="box cart-box">
+            <div class="box-content">
+                <div
+                class="box-img cart-img"
+                style="background-image: url('/coca-cola.webp')"
+                ></div>
+                <div>
+                <div class="content-head">
+                <h2>Coca Cola</h2>
+                <i class="fa-solid fa-basket-shopping"></i>
+              </div>
+              <p>Rs. 40 Per 600ml </p>
+            </div>
+            </div>
+          </div>
+          <div class="box cart-box">
+            <div class="box-content">
+                <div
+                  class="box-img cart-img"
+                  style="background-image: url('/toblerone.webp')"
+                ></div>
+                <div>
+                    <div class="content-head">
+                        <h2>Tobleron</h2>
+                        <i class="fa-solid fa-basket-shopping"></i>
+                      </div>
+                      <p>Rs. 180 Per Pack</p>
+                </div>
+              
+            </div>
+          </div>
+          <div class="box cart-box">
+            <div class="box-content">
+                <div
+                  class="box-img cart-img"
+                  style="background-image: url('/lays-cream-onion-flavour.webp')"
+                ></div>
+                <div>
+                    <div class="content-head">
+                        <h2>Lays Cream & onion</h2>
+                        <i class="fa-solid fa-basket-shopping"></i>
+                      </div>
+                      <p>Rs. 30 Per Pack</p>
+                </div>
+              
+            </div>
+          </div>
+          <div class="box cart-box">
+              <div class="box-content">
+                  <div
+                  class="box-img cart-img"
+                  style="background-image: url('/britannia-gobbles-choco-chill-cake.webp')"
+                  ></div>
+                  <div>
+                    <div class="content-head">
+                        <h2>Gobbles Choco Cake</h2>
+                        <i class="fa-solid fa-basket-shopping"></i>
+                      </div>
+                    <p>Rs. 80 Per Pack</p>
+                  </div>
+                
+            </div>
+          </div>
+    </div>
+    <div class="checkout">
+        <p>Total: Rs. 330</p>
+        <button>Proceed to checkout</button>
+    </div>
+ <!-- <footer> -->
+  <%- include("include/footer.ejs") %>
+</body>
+</html>
