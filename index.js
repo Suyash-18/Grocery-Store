@@ -18,6 +18,10 @@ const connection = mysql.createConnection({
     password: '@Suyash1234'
 });
 
+app.get("/" , (req, res) => {
+    res.send("hello from suyash");
+});
+
 app.listen(port, () =>{
     console.log(`App is listening on ${port}.`);
 });
