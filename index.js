@@ -6,6 +6,7 @@ const path = require("path");
 app.use(express.urlencoded({extended : true}));
 app.use(express.static(path.join(__dirname,"/public/css")));
 app.use(express.static(path.join(__dirname,"/public/js")));
+app.use(express.static(path.join(__dirname,"/public/images")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
@@ -19,7 +20,7 @@ const connection = mysql.createConnection({
 });
 
 app.get("/" , (req, res) => {
-    res.send("hello from suyash");
+    res.render("home");
 });
 
 app.listen(port, () =>{
