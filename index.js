@@ -3,6 +3,7 @@ const app = express();
 const mysql = require('mysql2');
 const path = require("path");
 const { faker } = require('@faker-js/faker');
+const { ifError } = require('assert');
 
 
 app.use(express.urlencoded({extended : true}));
@@ -24,24 +25,6 @@ const connection = mysql.createConnection({
 let getRandomUser = () => {
     return [faker.string.uuid(), faker.internet.userName(), faker.internet.email(), faker.phone.number(), faker.internet.password()];
 }
-let q="insert into user(id, name, email, phnumber, password) value ?;";
-let data = [];
-
-
-for(let i = 0; i < 10; i++){
-  data.push(getRandomUser());
-}
-try{
-  connection.query(q, [data], (err, result) => {
-    if (err) throw err ;
-    console.log(result); // results contains rows returned by server
-  });
-  
-}catch{
-  console.log(err);
-}
-
-connection.end();
 
 
 //Home Route
@@ -66,10 +49,41 @@ app.get("/signin" , (req, res) => {
 });
 // User info route
 app.post("/user" , (req,res) => {
-    let body = req.body;
-    res.send(body);
+    let {username,email,number,password} = req.body;
+    let id = faker.string.uuid();
+    let q=`insert into user(id, name, email, phnumber, password) value ('${id}', '${username}', '${email}', '${number}', '${password}')`;
+    try {
+        connection.query(q, (err, result) =>{
+            if(err) throw err;
+            res.redirect("/");
+        })
+    } catch {
+        console.log(err);
+    }
 });
 
 app.listen(port, () =>{
     console.log(`App is listening on ${port}.`);
 });
+
+
+
+// To insert fake data
+// let q="insert into user(id, name, email, phnumber, password) value ?;";
+// let data = [];
+
+
+// for(let i = 0; i < 10; i++){
+//   data.push(getRandomUser());
+// }
+// try{
+//   connection.query(q, [data], (err, result) => {
+//     if (err) throw err ;
+//     console.log(result); // results contains rows returned by server
+//   });
+  
+// }catch{
+//   console.log(err);
+// }
+
+// connection.end();
