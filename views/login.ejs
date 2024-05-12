@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+   <link rel="stylesheet" href="style.css">
+   <style>
+    body{
+        
+        overflow: hidden;
+    }
+    .wrap{
+      background: linear-gradient( to right, #323534ba ,rgba(81, 82, 81, 0.686)), url(/signin.webp);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 75vh;
+    }
+   </style>
+</head>
+<body>
+   <!-- <navbar> -->
+    <%- include("include/nav.ejs") %>
+    <div class="wrap">
+      <div class="container">
+        <h2>Login</h2>
+        <br>
+        <form action="/user" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Sign in">
+            </div>
+        </form>
+    </div>
+    </div>
+    
+    <!-- <footer> -->
+      <%- include("include/footer.ejs") %>
+</body>
+</html>
