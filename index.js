@@ -70,15 +70,19 @@ app.post("/user/login" , (req,res) => {
         connection.query(q, (err, result) =>{
             if(err) throw err;
             let user = result[0];
-            if(password == user.password)
-                // res.send(req.body);
-                res.render('home', {user});
-            else
-                res.render("error.ejs");
+            // if(password == user.password){
+            //     res.render('home', {user});
+            // }else{
+                res.render("error");
+            // }
         })
     } catch {
         console.log(err);
     }
+});
+
+app.get("/err" ,(req,res) => {
+    res.render('error');
 });
 
 app.listen(port, () =>{
