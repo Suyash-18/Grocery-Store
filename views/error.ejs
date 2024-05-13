@@ -12,13 +12,24 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        .err{
+            height: 75vh;
+        }
+        .err h1{
+            margin: 3rem 0;
+        }
+    </style>
   </head>
   <body>
         <!-- <navbar> -->
         <%- include("include/nav.ejs") %>
-        <h1>Error!!!</h1>
-        <a href="http://localhost:3000/"><button class="btn">Go To Home</button></a>
-
+        <div class="err">
+            <center>
+                <h1>Error!!!</h1>
+                <a href="http://localhost:3000/"><button class="btn">Go To Home</button></a>
+            </center>
+        </div>
         <!-- <footer> -->
         <%- include("include/footer.ejs") %>
 
