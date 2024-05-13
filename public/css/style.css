@@ -566,6 +566,20 @@
   .left{
     background: #f4f4f4;
   }
+
+  .btn{
+    padding: 10px 5px;
+    background: var(--green);
+    font-size: 1rem;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    color: #fff;
+    transition: 0.3s all ease-out;
+  }
+  .btn:hover{
+    background: #fff;
+    color: var(--green);
+  }
   /* .im-1, .im-3, .im-5, .cd-2, .cd-4, .cd-6, .img-1{
     position: relative;
     right: 20rem;
