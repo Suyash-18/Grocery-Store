@@ -572,7 +572,8 @@
     background: var(--green);
     font-size: 1rem;
     border: 2px solid var(--green);
-    border-radius: 5px;
+    border-radius: 15px;
+    cursor: pointer;
     color: #fff;
     transition: 0.3s all ease-out;
   }
