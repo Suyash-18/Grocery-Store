@@ -3,7 +3,7 @@ const app = express();
 const mysql = require('mysql2');
 const path = require("path");
 const { faker } = require('@faker-js/faker');
-const { ifError } = require('assert');
+// const { ifError } = require('assert');
 
 
 app.use(express.urlencoded({extended : true}));
@@ -55,7 +55,26 @@ app.post("/user" , (req,res) => {
     try {
         connection.query(q, (err, result) =>{
             if(err) throw err;
-            res.redirect("/");
+            res.render("login");
+        })
+    } catch {
+        console.log(err);
+    }
+});
+
+// Login Route
+app.post("/user/login" , (req,res) => {
+    let {email,password} = req.body;
+    let q=`select * from user where email = '${email}'`;
+    try {
+        connection.query(q, (err, result) =>{
+            if(err) throw err;
+            let user = result[0];
+            if(password == user.password)
+                // res.send(req.body);
+                res.render('home', {user});
+            else
+                res.render("error.ejs");
         })
     } catch {
         console.log(err);
