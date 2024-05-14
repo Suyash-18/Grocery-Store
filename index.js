@@ -63,18 +63,18 @@ app.post("/user" , (req,res) => {
 });
 
 // Login Route
-app.post("/user/login" , (req,res) => {
+app.post("/login" , (req,res) => {
     let {email,password} = req.body;
     let q=`select * from user where email = '${email}'`;
     try {
         connection.query(q, (err, result) =>{
             if(err) throw err;
             let user = result[0];
-            // if(password == user.password){
-            //     res.render('home', {user});
-            // }else{
+            if(password == user.password){
+                res.render('home', {user});
+            }else{
                 res.render("error");
-            // }
+            }
         })
     } catch {
         console.log(err);
