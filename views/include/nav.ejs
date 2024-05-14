@@ -35,11 +35,6 @@
           </ul>
         </div>
         
-        <div class="nav-signin border" id="buyButton">
-          <a href="/signin"><p><span>Hello, sign in</span></p>
-            <p class="nav-second">Account & List</p></a>
-          
-        </div>
         <div class="nav-return border">
           <p><span>Returns</span></p>
           <p class="nav-second">& Orders</p>
@@ -50,6 +45,20 @@
           &nbsp;&nbsp;Cart
         </a>
         </div>
+
+        <% if (user) { %>
+          <div class="profile">
+            <a href="/user/profile">
+              <img src="profile.webp" alt="profile" srcset="" class="profile-img">
+              <span class="user-name"><%= user.name %></span>
+            </a>
+          </div>
+        <% } else { %>         
+        <div class="nav-signin border" id="buyButton">
+          <a href="/signin"><p><span>Hello, sign in</span></p>
+            <p class="nav-second">Account & List</p></a>
+        </div>
+        <% } %>
       </div>
 </header>
 
