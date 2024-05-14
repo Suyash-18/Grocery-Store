@@ -7,9 +7,7 @@ const { faker } = require('@faker-js/faker');
 
 
 app.use(express.urlencoded({extended : true}));
-app.use(express.static(path.join(__dirname,"/public/css")));
-app.use(express.static(path.join(__dirname,"/public/js")));
-app.use(express.static(path.join(__dirname,"/public/images")));
+app.use(express.static(path.join(__dirname,"/public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
@@ -63,7 +61,7 @@ app.post("/user" , (req,res) => {
 });
 
 // Login Route
-app.post("/login" , (req,res) => {
+app.post("/user/login" , (req,res) => {
     let {email,password} = req.body;
     let q=`select * from user where email = '${email}'`;
     try {
@@ -81,8 +79,19 @@ app.post("/login" , (req,res) => {
     }
 });
 
-app.get("/err" ,(req,res) => {
-    res.render('error');
+//Profile Route
+app.get("/user/profile/:id" ,(req,res) => {
+    let {id} = req.params;
+    let q=`select * from user where id = '${id}'`;
+    try {
+        connection.query(q, (err, result) =>{
+            if(err) throw err;
+            let user = result[0]
+            res.render("profile", {user});
+        })
+    } catch {
+        console.log(err);
+    }
 });
 
 app.listen(port, () =>{
