@@ -190,6 +190,9 @@
     text-decoration: none;
     color: var(--green);
   }
+  .box-content p a:hover{
+    border-bottom: 2px solid var(--green);
+  }
   
   
   ul a {
@@ -581,6 +584,25 @@
     background: #fff;
     color: var(--green);
   }
+  a{
+    color: black;
+  }
+  .profile{
+    margin-top: 10px;
+  }
+  .profile .user-name{
+    font-size: 1.2rem;
+    position: relative;
+    bottom: 8px;
+    left: 10px;
+  }
+  .profile-img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: inline;
+  }
+
   /* .im-1, .im-3, .im-5, .cd-2, .cd-4, .cd-6, .img-1{
     position: relative;
     right: 20rem;
