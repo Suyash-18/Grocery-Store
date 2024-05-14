@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+        body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    </style>
+  </head>
+  <body>
+        <!-- <navbar> -->
+        <%- include("include/nav.ejs",{user}) %>
+
+        <div class="profile-container">
+            <div class="profile-left">
+              <img src="/images/profile.webp" alt="Profile Picture">
+              <h2>Name : <%= user.name %></h2>
+              <hr>
+              <p>Phone Number : <%= user.phnumber %></p>
+              <hr>
+              <p>Email : <%= user.email %></p>
+              <hr>
+              <button class="edit-btn"><i class="fas fa-edit"></i> edit</button>
+            </div>
+            <div class="profile-right">
+              <div class="navbar inner">
+                  <a href="#home">Orders Placed</a>
+                  <a href="#about">Cart Items</a>
+                </div>
+                <hr>
+            </div>
+          </div>
+          
+        <!-- <footer> -->
+        <%- include("include/footer.ejs") %>
+
+</body>
+</html>
