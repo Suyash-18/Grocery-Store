@@ -3,9 +3,16 @@ const app = express();
 const mysql = require('mysql2');
 const path = require("path");
 const { faker } = require('@faker-js/faker');
+const session = require('express-session');
 // const { ifError } = require('assert');
 
+const sessionOptions = {
+    secret: 'some secret',
+    resave: false,
+    saveUninitialized: true
+};
 
+app.use(session(sessionOptions));
 app.use(express.urlencoded({extended : true}));
 app.use(express.static(path.join(__dirname,"/public")));
 app.set("view engine", "ejs");
@@ -23,6 +30,11 @@ const connection = mysql.createConnection({
 let getRandomUser = () => {
     return [faker.string.uuid(), faker.internet.userName(), faker.internet.email(), faker.phone.number(), faker.internet.password()];
 }
+
+app.get('/session' ,(req,res) => {
+    console.log(req.session);
+    res.send(req.sessionID);
+});
 
 
 //Home Route
