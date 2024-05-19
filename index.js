@@ -4,15 +4,17 @@ const mysql = require('mysql2');
 const path = require("path");
 const { faker } = require('@faker-js/faker');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 // const { ifError } = require('assert');
 
 const sessionOptions = {
     secret: 'some secret',
-    resave: false,
+    resave: true,
     saveUninitialized: true
 };
 
 app.use(session(sessionOptions));
+app.use(cookieParser());
 app.use(express.urlencoded({extended : true}));
 app.use(express.static(path.join(__dirname,"/public")));
 app.set("view engine", "ejs");
@@ -27,19 +29,32 @@ const connection = mysql.createConnection({
     password: '@Suyash1234'
 });
 
+const mainuser = {
+    id: "00404806-4ee3-4fe2-92d3-3574525729e0",
+    name: "abcd",
+    email: "abcd@gmail.com",
+    phnumber: "9202",
+    password: "7366729"
+}
+
 let getRandomUser = () => {
     return [faker.string.uuid(), faker.internet.userName(), faker.internet.email(), faker.phone.number(), faker.internet.password()];
 }
 
 app.get('/session' ,(req,res) => {
+    req.session.user = mainuser;
+    req.session.save();
     console.log(req.session);
-    res.send(req.sessionID);
+    return res.send(req.session);
 });
 
 
 //Home Route
 app.get("/" , (req, res) => {
-    res.render("home");
+    let user = req.session.user;
+    console.log(req.session);
+    return res.render("home", {user});
+
 });
 //Contact Route
 app.get("/contact" , (req, res) => {
