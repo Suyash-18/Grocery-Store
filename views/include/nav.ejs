@@ -46,19 +46,13 @@
         </a>
         </div>
 
-        <% if (user) { %>
+        
           <div class="nav-signin border" id="buyButton">
             <a href="/signin"><p><span>Hello, sign in</span></p>
               <p class="nav-second">Account & List</p></a>
           </div>
-        <% } else { %> 
-          <div class="profile">
-            <a href="/user/profile/<%= user.id%>">
-              <img src="/images/profile.webp" alt="profile" srcset="" class="profile-img">
-              <span class="user-name"><%= user.name %></span>
-            </a>
-          </div>
-        <% } %>
+         
+          
       </div>
 </header>
 
